@@ -1,5 +1,5 @@
 import React from "react";
-const Numbers = () => {
+const Numbers = ({ handleClick }) => {
   const buttons = [
     "9",
     "8",
@@ -18,11 +18,12 @@ const Numbers = () => {
   return (
     <div>
       {buttons.map((button) => (
-        <button key={button}>{button}</button>
+        <button onClick={handleClick} key={button}>
+          {button}
+        </button>
       ))}
     </div>
   );
 };
 
 export default Numbers;
-

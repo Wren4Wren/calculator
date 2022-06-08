@@ -11,13 +11,22 @@ const App = () => {
     if (button === "=") {
       const result = evaluate(input);
       setInput(result);
-    }
+    } else if (button === "c") {
+      setInput("");
+    } else setInput(input + button);
   };
+
+  const handleClick = (e) => {
+    const display = e.target.textContent;
+    calculate(display);
+  };
+
   return (
-    <div>
+    <div className="App">
       <h1>My Calculator</h1>
-      <Operators />
-      <Numbers />
+      <h2>{ input }</h2>
+      <Operators handleClick={handleClick} />
+      <Numbers handleClick={handleClick} />
     </div>
   );
 };
