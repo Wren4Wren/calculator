@@ -26,19 +26,67 @@ describe("Header tests", () => {
     expect(headingElementType).toContainHTML("h1");
   });
 });
+describe("Math be mathing", () => {
+  it("should display 4 when the user enters 2+2", () => {
+    render(<App />);
+    const twoButton = screen.getByText("2");
+    const plusButton = screen.getByText("+");
+    const equalsButton = screen.getByText("=");
 
-it("should display 4 when the user enters 2+2", () => {
-  render(<App />);
-  const twoButton = screen.getByText("2");
-  const plusButton = screen.getByText("+");
-  const equalsButton = screen.getByText("=");
+    fireEvent.click(twoButton);
+    fireEvent.click(plusButton);
+    fireEvent.click(twoButton);
+    fireEvent.click(equalsButton);
 
-  fireEvent.click(twoButton);
-  fireEvent.click(plusButton);
-  fireEvent.click(twoButton);
-  fireEvent.click(equalsButton);
+    const display = screen.getByTestId("display");
+    expect(display).toHaveTextContent("4");
+  });
 
-  const display = screen.getByTestId("display");
-  expect( display ).toHaveTextContent( "4" );
-  
+  // Activity-Test 1
+  it("should display 3 when a user enters 6/2", () => {
+    render(<App />);
+    const sixButton = screen.getByText("6");
+    const divideButton = screen.getByText("/");
+    const twoButton = screen.getByText("2");
+    const equalsButton = screen.getByText("=");
+
+    fireEvent.click(sixButton);
+    fireEvent.click(divideButton);
+    fireEvent.click(twoButton);
+    fireEvent.click(equalsButton);
+  });
+
+  // Activity-Test 2
+  it("should display 6 when a user enters 3*2", () => {
+    render(<App />);
+    const threeButton = screen.getByText("3");
+    const multiplyButton = screen.getByText("*");
+    const twoButton = screen.getByText("2");
+    const equalsButton = screen.getByText("=");
+
+    fireEvent.click(threeButton);
+    fireEvent.click(multiplyButton);
+    fireEvent.click(twoButton);
+    fireEvent.click(equalsButton);
+  });
+
+  // Extra Activity-Test 3
+  it("should display 100 when a user enters 20*10/2", () => {
+    render(<App />);
+    const twoButton = screen.getByText("2");
+    const zeroButton = screen.getByText("0");
+    const oneButton = screen.getByText("1");
+    const multiplyButton = screen.getByText("*");
+    const divideButton = screen.getByText("/");
+    const equalsButton = screen.getByText("=");
+
+    fireEvent.click(twoButton);
+    fireEvent.click(zeroButton);
+    fireEvent.click(multiplyButton);
+    fireEvent.click(oneButton);
+    fireEvent.click(zeroButton);
+    fireEvent.click(divideButton);
+    fireEvent.click(twoButton);
+    fireEvent.click(equalsButton);
+  });
 });
