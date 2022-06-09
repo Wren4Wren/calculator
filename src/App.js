@@ -1,12 +1,14 @@
-import React from "react";
+import { evaluate } from "mathjs";
 import { useState } from "react";
 import "./App.css";
 import Numbers from "./components/Numbers";
 import Operators from "./components/Operators";
-import { evaluate } from "mathjs";
+
 const App = () => {
   const [input, setInput] = useState("");
-  // function to calculate a result on a specifi button click and update the state
+
+  //function to calculate a result on a specific button click and update the state
+
   const calculate = (button) => {
     if (button === "=") {
       const result = evaluate(input);
@@ -24,7 +26,7 @@ const App = () => {
   return (
     <div className="App">
       <h1>My Calculator</h1>
-      <h2>{ input }</h2>
+      <h2>{input}</h2>
       <Operators handleClick={handleClick} />
       <Numbers handleClick={handleClick} />
     </div>
